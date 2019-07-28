@@ -38,7 +38,24 @@
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        
+        if(needle.length()>haystack.length())
+            return -1;
+        if(needle.empty()){
+            return 0;
+        }
+        for(int i = 0; i <= haystack.length()-needle.length(); i++){
+            bool flag = true;
+            for(int j = 0; j < needle.length(); j++){
+                if(haystack[i+j]!=needle[j]){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                return i;
+            }
+        }
+        return -1;
     }
 };
 
